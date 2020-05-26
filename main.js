@@ -10,13 +10,7 @@ $(document).ready(function () {
     });
 })
 
-function changeBackgroundColor() {
+function loadFile() {
 
-    if ($('#main').hasClass('bg-success')) {
-        $('#main').removeClass('bg-success');
-        $('#main').addClass('bg-primary');
-    } else {
-        $('#main').removeClass('bg-primary');
-        $('#main').addClass('bg-success');
-    }
+    console.log('load file here');
 }
