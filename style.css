@@ -6,3 +6,38 @@ body {
     padding: 3rem 1.5rem;
     text-align: center;
 }
+
+.body {
+    background-color: #fcfcfc;
+}
+
+.title-1 {
+    color: #f94144;
+}
+
+.body-1 {
+    color: #577590;
+}
+
+.comment-1 {
+    color: #90be6d;
+}
+
+.poem-1 {
+    color: #43aa8b;
+}
+
+.unknown {
+    color: black;
+}
+
+/*
+#f94144
+#f3722c
+#f8961e
+#f9c74f
+#90be6d
+#43aa8b
+#577590
+
+*/
