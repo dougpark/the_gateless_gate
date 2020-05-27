@@ -53,7 +53,7 @@ function parse(value, index, array) {
     // detected each loop so start fresh
     var skip = 0;
     var title = 0;
-    var poem = 0;
+    var verse = 0;
 
     // title 
     var patt = new RegExp("[0-9]+\\.");
@@ -64,7 +64,7 @@ function parse(value, index, array) {
         title = 1;
         body = 0;
         bodyStart = 1; // body starts on next loop
-        poem = 0;
+        verse = 0;
 
         KoanCount += 1;
 
@@ -73,7 +73,7 @@ function parse(value, index, array) {
             'title': "",
             'body': [],
             'comment': [],
-            'poem': [],
+            'verse': [],
         };
 
         koan.title = value;
@@ -94,11 +94,11 @@ function parse(value, index, array) {
         }
     }
 
-    //poem
+    //verse
     var patt3 = new RegExp("^ ");
     var result3 = patt3.exec(value);
     if (result3 != null) {
-        poem = 1;
+        verse = 1;
         comment = 0;
     }
 
@@ -116,9 +116,9 @@ function parse(value, index, array) {
             $("#main").append('<p class="body-1">' + 'body-> ' + value + '</p>');
             GateList[GateList.length - 1].body.push(value);
         } else
-        if (poem == 1) {
-            $("#main").append('<p class="poem-1">' + 'poem-> ' + value + '</p>');
-            GateList[GateList.length - 1].poem.push(value);
+        if (verse == 1) {
+            $("#main").append('<p class="verse-1">' + 'verse-> ' + value + '</p>');
+            GateList[GateList.length - 1].verse.push(value);
         } else
 
         if (comment == 1) {
