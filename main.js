@@ -43,24 +43,17 @@ function processText(str) {
 var GateList = [];
 var KoanCount = 0;
 
-
-var bodyStart = 0;
-//var bodyEnd = 0;
-var body = 0;
-//var poemStart = 0;
-//var poemEnd = 0;
 var comment = 0;
+var bodyStart = 0;
+var body = 0;
 
 function parse(value, index, array) {
 
-    // var cr = '';
     var skip = 0;
-
     var title = 0;
-    //var body = 0;
     var poem = 0;
 
-    // title number
+    // title 
     var patt = new RegExp("[0-9]+\\.");
     var result = patt.exec(value);
     if (result != null) {
@@ -93,11 +86,9 @@ function parse(value, index, array) {
     var patt2 = new RegExp("comment:");
     var result2 = patt2.exec(value);
     if (result2 != null) {
-        //$("#main").append('<b>' + result2 + '</b>');
         comment = 1;
         if (body == 1) {
             bodyStart = 0;
-            // bodyEnd = 1;
             body = 0;
         }
     }
@@ -106,7 +97,6 @@ function parse(value, index, array) {
     var patt3 = new RegExp("^ ");
     var result3 = patt3.exec(value);
     if (result3 != null) {
-        //$("#main").append('<b>' + result2 + '</b>');
         poem = 1;
         comment = 0;
     }
@@ -116,11 +106,7 @@ function parse(value, index, array) {
     var patt02 = new RegExp('^[ ]{0,}\r');
     var result02 = patt02.exec(value);
     if (result02 != null) {
-        //count += 1;
-        //cr = "";
         skip = 1;
-        //var n = value.charCodeAt(0);
-        // $("#main").append('<b>' + '*' + 'n= ' + n + '</b>');
     }
 
 
@@ -152,27 +138,10 @@ function parse(value, index, array) {
             body = 1;
         }
 
-        // if (bodyEnd == 1) {
-        //     body = 0;
-        //     bodStart = 0;
-        //     bodyEnd = 0;
-        // }
     }
 
 
 
 
 
-}
-
-function loadFilexxx() {
-    let requestURL = './the_gateless_gate.txt';
-    let request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    //request.responseType = 'json';
-    request.send();
-    request.onload = function () {
-        text = request.response
-        $("#main").html(text);
-    };
 }
