@@ -12,3 +12,11 @@ Scanned, proofed and formatted at Sacred-texts.com, March 2007, by John Bruno Ha
 
 The Gateless Gate, by Ekai, called Mu-mon, tr. Nyogen Senzaki and Paul Reps [1934], at sacred-texts.com
 
+## About The Program
+
+I found these poems and thought it would be cool to download the file, and was dissapointed that it was just a plain ascii file without any kind of formatting. So instead of spending an hour formating it manually, I decided to spend **10's of hours** writing a program to parse it and display it as a formated web page.
+
+My goal was to not change the initial ascii file in any way. Stupid goal.
+
+
+

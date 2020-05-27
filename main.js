@@ -17,10 +17,8 @@ function loadFile() {
         url: "./the_gateless_gate.txt",
         method: "GET",
         success: function (response) {
-            let str = response;
 
-
-            processText(str);
+            processText(response);
             console.log(GateList);
 
         }
@@ -33,9 +31,11 @@ function processText(str) {
     };
     GateList.push(header);
 
-    var text = str.split("\n");
-    //console.log(text);
-    text.forEach(parse);
+    // put each line into an array
+    var input = str.split("\n");
+
+    // parse each line of input file
+    input.forEach(parse);
 
 }
 
@@ -43,12 +43,14 @@ function processText(str) {
 var GateList = [];
 var KoanCount = 0;
 
+// detected on previous loops so have to keep alive
 var comment = 0;
 var bodyStart = 0;
 var body = 0;
 
 function parse(value, index, array) {
 
+    // detected each loop so start fresh
     var skip = 0;
     var title = 0;
     var poem = 0;
@@ -58,9 +60,10 @@ function parse(value, index, array) {
     var result = patt.exec(value);
     if (result != null) {
 
+        // reset trackers
         title = 1;
         body = 0;
-        bodyStart = 1;
+        bodyStart = 1; // body starts on next loop
         poem = 0;
 
         KoanCount += 1;
@@ -75,8 +78,6 @@ function parse(value, index, array) {
 
         koan.title = value;
         GateList.push(koan);
-
-
     }
 
     //body
