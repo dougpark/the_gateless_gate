@@ -19,7 +19,8 @@ function loadFile() {
         success: function (response) {
 
             processText(response);
-            console.log(GateList);
+
+
 
         }
     });
@@ -29,26 +30,46 @@ function processText(str) {
     var header = {
         'header': []
     };
-    GateList.push(header);
+    koanList.push(header);
 
     // put each line into an array
     var input = str.split("\n");
 
-    // parse each line of input file
+    // parse each line of input filej - pass 1
     input.forEach(parse);
+
+    // final cleanup phase - pass 2
+    koanList.forEach(parse2)
+
+
+    console.log(koanList);
 
 }
 
+function parse2(row, index, array) {
 
-var GateList = [];
-var KoanCount = 0;
+    if (row.comment) {
+        let com = row.comment;
+        let index = com.length - 1;
+        let last = com[index];
+        com.splice(index, 1); // remove from com array
+
+        row.verse.unshift(last); // add to beginning of verse array
+
+    }
+
+
+}
+
+var koanList = [];
+var koanCount = 0;
 
 // detected on previous loops so have to keep alive
 var comment = 0;
 var bodyStart = 0;
 var body = 0;
 
-function parse(value, index, array) {
+function parse(row, index, array) {
 
     // detected each loop so start fresh
     var skip = 0;
@@ -57,7 +78,7 @@ function parse(value, index, array) {
 
     // title 
     var patt = new RegExp("[0-9]+\\.");
-    var result = patt.exec(value);
+    var result = patt.exec(row);
     if (result != null) {
 
         // reset trackers
@@ -66,18 +87,18 @@ function parse(value, index, array) {
         bodyStart = 1; // body starts on next loop
         verse = 0;
 
-        KoanCount += 1;
+        koanCount += 1;
 
         var koan = {
-            'koan': KoanCount,
+            'koan': koanCount,
             'title': "",
             'body': [],
             'comment': [],
             'verse': [],
         };
 
-        koan.title = value;
-        GateList.push(koan);
+        koan.title = row;
+        koanList.push(koan);
     }
 
     //body
@@ -85,7 +106,7 @@ function parse(value, index, array) {
 
     // comment
     var patt2 = new RegExp("comment:");
-    var result2 = patt2.exec(value);
+    var result2 = patt2.exec(row);
     if (result2 != null) {
         comment = 1;
         if (body == 1) {
@@ -96,7 +117,7 @@ function parse(value, index, array) {
 
     //verse
     var patt3 = new RegExp("^ ");
-    var result3 = patt3.exec(value);
+    var result3 = patt3.exec(row);
     if (result3 != null) {
         verse = 1;
         comment = 0;
@@ -105,7 +126,7 @@ function parse(value, index, array) {
 
     // carriage-return - check for 1 or more spaces before \r
     var patt02 = new RegExp('^[ ]{0,}\r');
-    var result02 = patt02.exec(value);
+    var result02 = patt02.exec(row);
     if (result02 != null) {
         skip = 1;
     }
@@ -113,25 +134,25 @@ function parse(value, index, array) {
 
     if (skip == 0) {
         if (body == 1) {
-            $("#main").append('<p class="body-1">' + 'body-> ' + value + '</p>');
-            GateList[GateList.length - 1].body.push(value);
+            $("#main").append('<p class="body-1">' + 'body-> ' + row + '</p>');
+            koanList[koanList.length - 1].body.push(row);
         } else
         if (verse == 1) {
-            $("#main").append('<p class="verse-1">' + 'verse-> ' + value + '</p>');
-            GateList[GateList.length - 1].verse.push(value);
+            $("#main").append('<p class="verse-1">' + 'verse-> ' + row + '</p>');
+            koanList[koanList.length - 1].verse.push(row);
         } else
 
         if (comment == 1) {
-            $("#main").append('<p class="comment-1">' + 'comment-> ' + value + '</p>');
-            GateList[GateList.length - 1].comment.push(value);
+            $("#main").append('<p class="comment-1">' + 'comment-> ' + row + '</p>');
+            koanList[koanList.length - 1].comment.push(row);
         } else
 
         if (title == 1) {
-            $("#main").append('<p class="title-1">' + 'title-> ' + value + '</p>');
+            $("#main").append('<p class="title-1">' + 'title-> ' + row + '</p>');
         } else {
-            $("#main").append('<p class="unknown">' + 'header-> ' + value + '</p>');
+            $("#main").append('<p class="unknown">' + 'header-> ' + row + '</p>');
 
-            GateList[GateList.length - 1].header.push(value);
+            koanList[koanList.length - 1].header.push(row);
         }
 
         // bodyStart is set in Title, so start body next round
