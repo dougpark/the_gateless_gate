@@ -1,5 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Julius+Sans+One|Libre+Baskerville:400,400italic);
+
 body {
-    padding-top: 5rem;
+    xpadding-top: 5rem;
+
+
 }
 
 .starter-template {
@@ -7,28 +11,83 @@ body {
     text-align: center;
 }
 
+h1,
+h2 {
+    font-family: 'gothic_ultra_otregular',
+        Arial,
+        sans-serif;
+
+}
+
+h1 {
+    font-size: 400%;
+
+}
+
+h5,
+h6 {
+    font-family: 'Libre Baskerville',
+        Arial,
+        sans-serif;
+}
+
+
+
 .body {
-    background-color: #fcfcfc;
+    color: #555753;
+    background: #d9e1cd;
+    line-height: 1.6;
+
+    /*
+    color: #7D775C;
+    color: #B7A5DF;
+    color: #D4CDDC;
+    color: #9685BA;
+    color: #988F5E;
+    color: #B3AE94;
+
+    color: #325050;
+    color: #a9b995;
+    background: #d9e1cd;
+
+    color: #fff;
+    background: #357d93;
+
+    background: #edf4f0;
+    color: #607476;
+    color: #49968e;
+     #d9e3dc;
+     color: #616857;
+     #a0b9ad
+     background: #3e5d67;
+
+     background: #134347;
+    */
 }
 
 .title-1 {
-    color: #f94144;
+    color: #C7111A;
+
 }
 
 .body-1 {
-    color: #577590;
+    color: black;
+    line-height: 1.6;
 }
 
 .comment-1 {
-    color: #90be6d;
+    color: black;
+    line-height: 1.6;
 }
 
 .verse-1 {
-    color: #43aa8b;
+    color: black;
+    line-height: 1.6;
 }
 
 .unknown {
     color: black;
+    line-height: 1.6;
 }
 
 /*

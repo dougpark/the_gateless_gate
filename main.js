@@ -39,10 +39,29 @@ function processText(str) {
     input.forEach(parse);
 
     // final cleanup phase - pass 2
-    koanList.forEach(parse2)
+    koanList.forEach(parse2);
+
+    koanList.forEach(disp);
 
 
     console.log(koanList);
+
+}
+
+function disp(row, index, array) {
+
+    if (row.title) {
+        $("#main").append('<h2 class="title-1 text-uppercase">' + row.title + '</h2>');
+    }
+    if (row.body) {
+        $("#main").append('<h6 class="body-1 text-justify">' + row.body + '</h6>');
+    }
+    if (row.comment) {
+        $("#main").append('<h6 class="comment-1 text-justify">' + row.comment + '</h6>');
+    }
+    if (row.verse) {
+        $("#main").append('<h6 class="verse-1 text-justify">' + row.verse + '</h6>');
+    }
 
 }
 
@@ -131,26 +150,28 @@ function parse(row, index, array) {
         skip = 1;
     }
 
+    // remove end \r here
+
 
     if (skip == 0) {
         if (body == 1) {
-            $("#main").append('<p class="body-1">' + 'body-> ' + row + '</p>');
+            //$("#main").append('<p class="body-1">' + 'body-> ' + row + '</p>');
             koanList[koanList.length - 1].body.push(row);
         } else
         if (verse == 1) {
-            $("#main").append('<p class="verse-1">' + 'verse-> ' + row + '</p>');
+            //$("#main").append('<p class="verse-1">' + 'verse-> ' + row + '</p>');
             koanList[koanList.length - 1].verse.push(row);
         } else
 
         if (comment == 1) {
-            $("#main").append('<p class="comment-1">' + 'comment-> ' + row + '</p>');
+            //$("#main").append('<p class="comment-1">' + 'comment-> ' + row + '</p>');
             koanList[koanList.length - 1].comment.push(row);
         } else
 
         if (title == 1) {
-            $("#main").append('<p class="title-1">' + 'title-> ' + row + '</p>');
+            //$("#main").append('<p class="title-1">' + 'title-> ' + row + '</p>');
         } else {
-            $("#main").append('<p class="unknown">' + 'header-> ' + row + '</p>');
+            //$("#main").append('<p class="unknown">' + 'header-> ' + row + '</p>');
 
             koanList[koanList.length - 1].header.push(row);
         }

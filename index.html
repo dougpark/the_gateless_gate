@@ -11,6 +11,8 @@
         crossorigin="anonymous">
     <!-- Font Awsome GET YOUR OWN KEY -->
     <script src="https://kit.fontawesome.com/10207a6b26.js" crossorigin="anonymous"></script>
+    <!-- https://www.fontsquirrel.com/fonts/Gothic-Ultra-OT -->
+    <link rel="stylesheet" href="./css/stylesheet.css">
 
     <!-- Local Styles -->
     <link rel="stylesheet" href="style.css">
@@ -21,7 +23,47 @@
 
 <body onload="loadFile()" class="body">
 
-    <div id="main" class="">
+    <!-- Navigation Bar -->
+    <nav class="navbar  navbar-dark bg-dark  sticky-top mx-auto px-1">
+
+
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#main_nav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+
+        <!-- main_nav -->
+        <div class="collapse navbar-collapse" id="main_nav">
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#toc" data-toggle="modal">
+                        <span class="fas fa-book"></span>
+                        Table of Contents
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">
+                        <span class="fas fa-info"></span>
+                        About
+                    </a>
+                </li>
+
+            </ul>
+
+        </div> <!-- end main_nav navbar-collapse.// -->
+    </nav>
+
+
+    <h1 class="text-center p-5"> The Gateless Gate</h1>
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 ">
+                <div id="main" class="">
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Important for Bootstrap and jQuery -->
