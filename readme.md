@@ -18,9 +18,6 @@ The common theme of the koans of the Wumen Guan and of Wumen's comments is the i
 
 [More about The Gateless Gate](https://en.wikipedia.org/wiki/The_Gateless_Barrier)
 
-I was introduced to all of this by [The Codeless Code](http://thecodelesscode.com/case/1). Which you should read if you are reading this.
-
-
 ## About This Program
 
 I found these koans and thought it would be cool to download the file, and was dissapointed that it was just a plain ascii file without any kind of formatting. So instead of spending an hour formating it manually, I decided to spend **10's of hours** writing a program to parse it and display it as a formated web page.
@@ -29,5 +26,6 @@ My goal was to not change the initial ascii file in any way. Stupid goal.
 
 My first text parsing using Javascript, and my first use of Regular Expressions (Regex).
 
+## Inspiared By
 
-
+[The Codeless Code](http://thecodelesscode.com/case/1). Which you should read if you are reading this.

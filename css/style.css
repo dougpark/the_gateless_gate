@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Julius+Sans+One|Libre+Baskerville:400,400italic);
+@import url(https://fonts.googleapis.com/css?family=Julius+Sans+One|Libre+Baskerville:400,400italic);
 
 
 
@@ -66,8 +66,14 @@ h6 {
 
 }
 
-.subhead::first-letter {
+.drop-cap::first-letter {
+    font-family: 'gothic_ultra_otregular';
+    color: #C7111A;
+    -webkit-initial-letter: 2;
     initial-letter: 2;
+
+    xfont-weight: bold;
+    margin-right: .75em;
 }
 
 blockquote {
@@ -76,8 +82,6 @@ blockquote {
     border-left: 4px solid #e8e8e8;
     padding-left: 15px;
     font-size: 18px;
-    xletter-spacing: -1px;
-    xfont-style: italic;
 }
 
 .body-1 {

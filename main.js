@@ -73,14 +73,19 @@ function disp(row, index, array) {
 
         $("#main").append('<h2 class="title-1 text-center text-uppercase">' + title + '</h2><br>');
     }
+
     if (row.body) {
         let text = row.body;
+        let drop = "drop-cap";
         text.forEach(function (row) {
-            $("#main").append('<h6 class="body-1 text-justify subhead">' + row + '</h6>');
+            $("#main").append('<h6 class="body-1 text-justify ' + drop + '">' + row + '</h6>');
+            drop = "";
         })
 
     }
     if (row.comment) {
+        $("#main").append('<hr style="width:50%;text-align:center;"></hr>');
+
         let text = row.comment;
         text.forEach(function (row) {
             $("#main").append('<h6 class="comment-1 text-justify">' + row + '</h6>');
@@ -98,7 +103,7 @@ function disp(row, index, array) {
             line += row + '</br>';
             count++;
         })
-        line += '</h6 > </blockquote>';
+        line += '</h6 > </blockquote><br>';
 
         $("#main").append(line);
 
@@ -191,9 +196,20 @@ function parse(row, index, array) {
         skip = 1;
     }
 
+    var patt02a = new RegExp('^[ ]{0,}\n');
+    var result02a = patt02a.exec(row);
+    if (result02a != null) {
+        skip = 1;
+    }
+    if (row.length < 10) {
+        skip = 1;
+    }
+
     // remove end \r here
     var patt03 = new RegExp('\r');
     row = row.replace(patt03, '');
+    var patt03a = new RegExp('\n');
+    row = row.replace(patt03a, '');
 
 
 
@@ -217,7 +233,9 @@ function parse(row, index, array) {
         } else {
             //$("#main").append('<p class="unknown">' + 'header-> ' + row + '</p>');
 
-            koanList[koanList.length - 1].header.push(row);
+            if (row) {
+                koanList[koanList.length - 1].header.push(row);
+            }
         }
 
         // bodyStart is set in Title, so start body next round
