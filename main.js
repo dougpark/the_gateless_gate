@@ -50,17 +50,58 @@ function processText(str) {
 
 function disp(row, index, array) {
 
+    if (row.header) {
+        let text = row.header;
+        text.forEach(function (row) {
+            $("#about-header").append('<h6 class="comment-1 text-justify">' + row + '</h6>');
+        });
+    }
+
     if (row.title) {
-        $("#main").append('<h2 class="title-1 text-uppercase">' + row.title + '</h2>');
+
+        let title = row.title;
+
+        var patt = new RegExp("[0-9]+\\.");
+        var result = patt.exec(title);
+        if (result != null) {
+            title = title.replace(result, "");
+            var patt = new RegExp("[0-9]{1,}");
+            var result = patt.exec(result);
+
+            $("#main").append('<h2 class="title-1 text-center text-uppercase">&#9866; ' + result + ' &#9866;</h2>');
+        }
+
+        $("#main").append('<h2 class="title-1 text-center text-uppercase">' + title + '</h2><br>');
     }
     if (row.body) {
-        $("#main").append('<h6 class="body-1 text-justify">' + row.body + '</h6>');
+        let text = row.body;
+        text.forEach(function (row) {
+            $("#main").append('<h6 class="body-1 text-justify subhead">' + row + '</h6>');
+        })
+
     }
     if (row.comment) {
-        $("#main").append('<h6 class="comment-1 text-justify">' + row.comment + '</h6>');
+        let text = row.comment;
+        text.forEach(function (row) {
+            $("#main").append('<h6 class="comment-1 text-justify">' + row + '</h6>');
+        })
+
     }
     if (row.verse) {
-        $("#main").append('<h6 class="verse-1 text-justify">' + row.verse + '</h6>');
+        let line = '<blockquote><h6 class="verse-1 text-justify">';
+        let text = row.verse;
+        let count = 0;
+        text.forEach(function (row) {
+            if (count > 0) {
+                line += '&nbsp;'
+            }
+            line += row + '</br>';
+            count++;
+        })
+        line += '</h6 > </blockquote>';
+
+        $("#main").append(line);
+
     }
 
 }
@@ -151,6 +192,9 @@ function parse(row, index, array) {
     }
 
     // remove end \r here
+    var patt03 = new RegExp('\r');
+    row = row.replace(patt03, '');
+
 
 
     if (skip == 0) {
