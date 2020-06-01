@@ -1,15 +1,67 @@
 // this runs when page is finished loading
 $(document).ready(function () {
 
-    // set text
-    //$("#main").html("Hello World");
-
-    // button click
-    // $("#btn1").click(function () {
-    //     changeBackgroundColor();
-    // });
 })
 
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function inViewport(element) {
+    if (typeof jQuery === "function" && element instanceof jQuery) {
+        element = element[0];
+    }
+    var elementBounds = element.getBoundingClientRect();
+    return (
+        elementBounds.top >= 0 &&
+        elementBounds.left >= 0 &&
+        elementBounds.bottom <= $(window).height() &&
+        elementBounds.right <= $(window).width()
+    );
+}
+
+function idInCurrentView() {
+    for (id = 1; id <= 49; id++) {
+        if (inViewport($('#koan-' + id))) {
+            break;
+        }
+    }
+    return id;
+}
+
+function scrollDir(direction = 1) {
+
+    let currId = idInCurrentView();
+
+    if (direction > 0) {
+        if (currId < 49) {
+            scrollToId(currId + 1);
+        }
+    } else {
+        if (currId > 1) {
+            scrollToId(currId - 1);
+        }
+    }
+
+}
+
+function scrollToId(id) {
+    if (!Number.isInteger(id)) {
+        id = randomIntFromInterval(1, 49);
+    }
+
+    $('#koan-' + id).scrollTo();
+
+}
+
+$.fn.scrollTo = function (speed) {
+    if (typeof (speed) === 'undefined')
+        speed = 500;
+
+    $('html, body').animate({
+        scrollTop: parseInt($(this).offset().top - 100)
+    }, speed);
+};
 
 function loadFile() {
 
@@ -68,6 +120,10 @@ function disp(row, index, array) {
             var patt = new RegExp("[0-9]{1,}");
             var result = patt.exec(result);
 
+
+
+            $("#main").append('<article id="koan-' + result + '"> ');
+
             $("#main").append('<h2 class="title-1 text-center text-uppercase">&#9866; ' + result + ' &#9866;</h2>');
         }
 
@@ -103,13 +159,16 @@ function disp(row, index, array) {
             line += row + '</br>';
             count++;
         })
-        line += '</h6 > </blockquote><br>';
+        line += '</h6 > </blockquote><br></div>';
 
         $("#main").append(line);
+
 
     }
 
 }
+
+
 
 function parse2(row, index, array) {
 
