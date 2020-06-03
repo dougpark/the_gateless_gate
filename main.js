@@ -8,11 +8,14 @@ $(document).ready(function () {
     $(document).keydown(function (e) {
         let up = [0, 37, 38, 65, 87];
         let down = [0, 32, 39, 40, 68, 83];
-
+        let r = [0, 82];
+        console.log(e.keyCode);
         if (up.indexOf(e.keyCode) > 0) {
             scrollDir(-1);
         } else if (down.indexOf(e.keyCode) > 0) {
             scrollDir();
+        } else if (r.indexOf(e.keyCode) > 0) {
+            scrollToId(true);
         }
 
     });
