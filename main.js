@@ -1,6 +1,19 @@
 // this runs when page is finished loading
 $(document).ready(function () {
 
+    // left = 37
+    // up = 38
+    // right = 39
+    // down = 40
+    $(document).keydown(function (e) {
+        if (e.keyCode == 37) {
+            scrollDir(-1);
+        } else if (e.keyCode == 39) {
+            scrollDir();
+        }
+
+    });
+
 })
 
 function randomIntFromInterval(min, max) { // min and max included 
@@ -96,7 +109,7 @@ function processText(str) {
     koanList.forEach(disp);
 
 
-    console.log(koanList);
+    //console.log(koanList);
 
 }
 

@@ -20,7 +20,7 @@ The common theme of the koans of the Wumen Guan and of Wumen's comments is the i
 
 ## About This Program
 
-I found these koans and thought it would be cool to download the file, and was dissapointed that it was just a plain ascii file without any kind of formatting. So instead of spending an hour formating it manually, I decided to spend **10's of hours** writing a program to parse it and display it as a formated web page.
+I found these koans and thought it would be nice to download the file, and was dissapointed that it was just a plain ascii file without any kind of formatting. So instead of spending an hour formating it manually, I decided to spend **10's of hours** writing a program to parse it and display it as a formated web page.
 
 My goal was to not change the initial ascii file in any way. Stupid goal.
 
