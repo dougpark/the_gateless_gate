@@ -6,9 +6,12 @@ $(document).ready(function () {
     // right = 39
     // down = 40
     $(document).keydown(function (e) {
-        if (e.keyCode == 37) {
+        let up = [0, 37, 38, 65, 87];
+        let down = [0, 32, 39, 40, 68, 83];
+
+        if (up.indexOf(e.keyCode) > 0) {
             scrollDir(-1);
-        } else if (e.keyCode == 39) {
+        } else if (down.indexOf(e.keyCode) > 0) {
             scrollDir();
         }
 
