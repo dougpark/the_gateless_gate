@@ -26,7 +26,7 @@ My goal was to not change the initial ascii file in any way. Stupid goal.
 
 My first text parsing using Javascript, and my first use of Regular Expressions (Regex).
 
-[See a working demo](https://64zbit.com/gate)
+[See a working demo](https://dev.64zbit.com/gate)
 
 ## Inspired By
 
