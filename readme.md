@@ -18,6 +18,10 @@ The common theme of the koans of the Wumen Guan and of Wumen's comments is the i
 
 [More about The Gateless Gate](https://en.wikipedia.org/wiki/The_Gateless_Barrier)
 
+## Keyboard Shortcuts
+
+You can use right and down arrows and s and d to move down to the next Koan, or use left and up arrows and a w to move up to the previous koan.
+
 ## About This Program
 
 I found these koans and thought it would be nice to download the file, and was dissapointed that it was just a plain ascii file without any kind of formatting. So instead of spending an hour formating it manually, I decided to spend **10's of hours** writing a program to parse it and display it as a formated web page.
